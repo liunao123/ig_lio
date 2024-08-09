@@ -516,6 +516,7 @@ void Process() {
     // Eigen::Matrix4d lio_pose = result_pose * T_bmi088_velodyne;
     // // 2.if use velodyne, please uncomment below extrinsics conversion
     // Eigen::Matrix4d lio_pose = result_pose * T_imu_lidar;
+    lio_pose = result_pose * T_imu_lidar;
 
     Eigen::Quaterniond lio_q(lio_pose.block<3, 3>(0, 0));
     odom_stream << std::fixed << std::setprecision(6)
@@ -557,7 +558,10 @@ int main(int argc, char** argv) {
     lidar_type = LidarType::OUSTER;
   } else if (lidar_type_string == "livox") {
     lidar_type = LidarType::LIVOX;
-  } else {
+  } else  if (lidar_type_string == "Robosense") {
+    lidar_type = LidarType::Robosense;
+  } else
+  {
     LOG(ERROR) << "erro lidar type!";
     exit(0);
   }
@@ -697,7 +701,7 @@ int main(int argc, char** argv) {
   voxel_filter.setLeafSize(0.5, 0.5, 0.5);
 
   // save trajectory
-  fs::path result_path = fs::path(package_path) / "result" / "lio_odom.txt";
+  fs::path result_path = fs::path(package_path) / "result" / "ig_lio_odom.txt";
   if (!fs::exists(result_path.parent_path())) {
     fs::create_directories(result_path.parent_path());	
   }

@@ -4,4 +4,21 @@
     <node pkg="ig_lio" type="ig_lio_node" name="ig_lio_node" output="screen" />
     
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ig_lio)/rviz/lio_show.rviz" required="true" />
+
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/sync/v1_avia_hk/v1_avia_hk_sync_2024-04-29-14-06-04.bag -d 1 -s 1 -r 0.5  "/>  -->
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/sync/v1_avia_hk/v1_avia_hk_sync_2024-04-29-15-09-16_E_2.bag -d 2 -s 0"/>  -->
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/sync/v1_avia_hk/V1_avia_sync_2024-05-07-17-12-56.bag -d 2 -s 3 -r 0.5  "/>  -->
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/sync/v1_avia_hk/v1_avia_hk_sync_2024-04-29-15-20-53_EF.bag -d 2 -s 0 -r 1  "/>  -->
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/sync/avia_sichuan_lj_20240520/bag/v1_avia_hk_sync_langjiu_20240522_s3.bag -d 2  -r 1  "/>  -->
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/sync/avia_sichuan_lj_20240520/bag/v1_avia_hk_sync_langjiu_20240524_B_2_loop.bag -d 2  -r 0.5 -duration 750 "/>  -->
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/sync/avia_sichuan_lj_20240520/bag/v1_avia_hk_sync_langjiu_20240523_dzg_2_loop.bag -d 2  -r 1 "/>  -->
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/sync/avia_sichuan_lj_20240520/bag/v1_avia_hk_sync_langjiu_2024-05-20-14-05-43_all.bag -d 5 -s 5 "/>  -->
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/sync/v1_avia_hk_EFG_2024-06-21-10-14-58.bag -d 2 -s 10 -r 1 "/>  -->
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/sync/v1_avia_hk/v1_avia_hk_sync_2024-04-29-15-09-16_E_2.bag -d 2 -r 1.25 -s 5 -duration 285 "/>  -->
+
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/zhengzhou_20240509/avia/chedi_cebian_v1_avia_hk_20240626.bag -d 2 -s 5 -r 1.0 "/>  -->
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/zhengzhou_20240509/avia/cebian_avia_hk_20240624.bag -d 2 -s 5 -r 1 "/>  -->
+	<!-- <node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/direct_l_v_calibrate_data_avia/cab_hall/v1_avia_hk_20240713_1080_EF.bag -d 2 -s 0 -r 1.0 -duration 1600"/>  -->
+	<node pkg="rosbag" type="play" name="playrosbag" output="screen" required="false" args="/home/bag/sync/v1_avia_hk_EFG_2024-06-21-10-14-58.bag -d 2 -s 0 -r 1 "/> 
+
 </launch>

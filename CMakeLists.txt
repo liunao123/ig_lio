@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.0.2)
 project(ig_lio)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_C_COMPILER "/usr/bin/gcc-9")
+set(CMAKE_CXX_COMPILER "/usr/bin/g++-9")
+ADD_COMPILE_OPTIONS(-std=c++17 )
+set( CMAKE_CXX_FLAGS "-std=c++17 -O3 -ltbb" ) 
 
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 ${CMAKE_CXX_FLAGS} -Wall")
@@ -24,6 +28,10 @@ find_package(catkin REQUIRED COMPONENTS
 # find_package(Boost REQUIRED COMPONENTS system)
 find_package(Eigen3 REQUIRED)
 find_package(PCL 1.8 REQUIRED)
+
+message(STATUS " WWWWWWWWWWWWWW ===== 在ubuntu18上 要使用m-detector里面的2019的TBB  =====")
+include("/opt/csg/slam/navs/src/M-detector/oneTBB-2019_U8/cmake/TBBBuild.cmake")
+tbb_build(TBB_ROOT "/opt/csg/slam/navs/src/M-detector/oneTBB-2019_U8" CONFIG_DIR TBB_DIR)
 find_package(TBB REQUIRED)
 
 include(cmake/glog.cmake)

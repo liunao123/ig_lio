@@ -4,4 +4,9 @@
     <node pkg="ig_lio" type="ig_lio_node" name="ig_lio_node" output="screen" />
     
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ig_lio)/rviz/lio_show.rviz" required="true" />
+
+    <!-- <node pkg="rosbag" type="play" name="bag_play"  required="false"  output="screen"  args="/home/bag/zhengzhou_20240509/cebian_20240509slow_rslidar.bag -s 0  -d 2 "/> -->
+    <!-- <node pkg="rosbag" type="play" name="bag_play"  required="false"  output="screen"  args="/home/bag/zhengzhou_20240509/cebian_20240509_rslidar_s60.bag -s 60  -d 2 "/> -->
+    <node pkg="rosbag" type="play" name="bag_play"  required="false"  output="screen"  args="/home/bag/zhengzhou_20240509/chedi_20240603_rslidar.bag -d 2 "/>
+    
 </launch>

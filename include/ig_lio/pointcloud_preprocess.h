@@ -6,7 +6,9 @@
 
 #ifndef POINTCLOUD_PREPROCESS_H_
 #define POINTCLOUD_PREPROCESS_H_
-
+#define PCL_NO_PRECOMPILE
+#include <pcl/filters/extract_indices.h>
+#include <pcl/pcl_macros.h>
 #include <ros/ros.h>
 #include <sensor_msgs/PointCloud2.h>
 
@@ -15,10 +17,14 @@
 #include <pcl_conversions/pcl_conversions.h>
 
 #include <livox_ros_driver/CustomMsg.h>
-
+#include <pcl/point_cloud.h>
+#include <pcl/point_types.h>
 #include "point_type.h"
+#include <pcl/filters/filter.h> // removeNaNFromPointCloud function 
+#include <pcl/filters/radius_outlier_removal.h>
+#include <pcl/filters/conditional_removal.h>
 
-enum class LidarType { LIVOX, VELODYNE, OUSTER };
+enum class LidarType { LIVOX, VELODYNE, OUSTER, Robosense };
 
 // for Velodyne LiDAR
 struct VelodynePointXYZIRT {
@@ -65,6 +71,19 @@ POINT_CLOUD_REGISTER_POINT_STRUCT(
 //         double, timestamp, timestamp)(uint16_t, reflectivity, reflectivity)(
 //         uint8_t, ring, ring)(uint16_t, noise, noise)(uint32_t, range, range))
 
+struct RsPointXYZIRT
+{
+  PCL_ADD_POINT4D;
+  float intensity;
+  // PCL_ADD_INTENSITY;
+  uint16_t ring = 0;
+  double timestamp = 0;
+  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+} EIGEN_ALIGN16;
+
+POINT_CLOUD_REGISTER_POINT_STRUCT(RsPointXYZIRT,
+                                  (float, x, x)(float, y, y)(float, z, z)(float, intensity, intensity)(uint16_t, ring, ring)(double, timestamp, timestamp))
+
 class PointCloudPreprocess {
  public:
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
@@ -105,6 +124,9 @@ class PointCloudPreprocess {
                        pcl::PointCloud<PointType>::Ptr& cloud_out);
 
   void ProcessOuster(const sensor_msgs::PointCloud2::ConstPtr& msg,
+                     pcl::PointCloud<PointType>::Ptr& cloud_out);
+
+  void RobosenseHandler(const sensor_msgs::PointCloud2::ConstPtr& msg,
                      pcl::PointCloud<PointType>::Ptr& cloud_out);
 
   int num_scans_ = 128;
